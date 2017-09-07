@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Link,
+    Switch,
+    Redirect
 } from 'react-router-dom'
 
 import './App.css';
@@ -22,6 +24,11 @@ const About = () => (
     </div>
 )
 
+const NoMatch = ({location}) => (
+    <div>
+        <h3>No match for <code>{location.pathname}</code></h3>
+    </div>
+)
 
 class ProductStore extends Component {
     constructor (props) {
@@ -90,12 +97,20 @@ class App extends Component {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/topics">Products</Link></li>
+                        <li><Link to="/old-match">Old Match, to be
+                            redirected</Link></li>
+                        <li><Link to="/will-not-match">Will Not Match</Link>
+                        </li>
                     </ul>
                     <hr/>
 
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/topics" component={ProductStore}/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/about" component={About}/>
+                        <Redirect from="/old-match" to="/about"/>
+                        <Route path="/topics" component={ProductStore}/>
+                        <Route component={NoMatch}/>
+                    </Switch>
                 </div>
             </Router>
         );
