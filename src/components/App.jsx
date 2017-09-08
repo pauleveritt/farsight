@@ -8,22 +8,17 @@ import {
     Redirect
 } from 'react-router-dom'
 import {Provider} from 'mobx-react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import './App.css';
 import store from '../models/index'
 
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import ListBookmarks from "./ListBookmarks";
 import AddBookmark from "./AddBookmark";
-
-const NoMatch = ({location}) => (
-    <div>
-        <h3>No match for <code>{location.pathname}</code></h3>
-    </div>
-)
+import NotFound from "./NotFound";
 
 class App extends Component {
     render () {
@@ -52,7 +47,7 @@ class App extends Component {
                                        component={AddBookmark}/>
                                 <Route path="/bookmarks"
                                        component={ListBookmarks}/>
-                                <Route component={NoMatch}/>
+                                <Route component={NotFound}/>
                             </Switch>
                         </div>
                     </Router>
