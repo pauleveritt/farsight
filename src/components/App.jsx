@@ -29,6 +29,8 @@ class App extends Component {
         drawerMenus: appConfig.DRAWER.menus
     }
 
+    appStyle = {padding: '1em'}
+
     render () {
         const {
             drawerOpened,
@@ -87,7 +89,9 @@ class App extends Component {
                         </IconMenu>
                     }
                 />
+                <div style={this.appStyle}>
                 <MainRoutes/>
+                </div>
             </div>
         )
     }
