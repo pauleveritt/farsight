@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import './index.css'
-import App from './components/App'
 import registerServiceWorker from './registerServiceWorker'
+import Root from "./Root";
 
 injectTapEventPlugin()
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(<Root/>, document.getElementById('root'))
 registerServiceWorker()
