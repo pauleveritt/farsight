@@ -8,7 +8,7 @@ class BookmarksStore {
     @observable bookmarks = []
     @observable selectedItem = {}
 
-    url = appConfig.API_SERVER + '/xbookmarks'
+    url = appConfig.API_SERVER + '/bookmarks'
 
     constructor (rootStore) {
         this.rootStore = rootStore
