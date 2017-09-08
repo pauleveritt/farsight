@@ -7,15 +7,16 @@ import {
     Switch,
     Redirect
 } from 'react-router-dom'
+import {Provider} from 'mobx-react'
 
 import './App.css';
+import store from '../models/index'
 
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
-import ListBookmarks from "./bookmarks/ListBookmarks";
-import Bookmarks from "./bookmarks/Bookmarks";
+import ListBookmarks from "./ListBookmarks";
 
 const NoMatch = ({location}) => (
     <div>
@@ -24,61 +25,36 @@ const NoMatch = ({location}) => (
 )
 
 class App extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            selectedProducts: [],
-            products: [
-                {id: 1, name: 'AirMax 90', brand: 'Nike'},
-                {id: 2, name: 'Yeezy', brand: 'Adidas'},
-                {id: 3, name: 'Classic', brand: 'Reebok'},
-            ]
-        }
-    }
-
-    handleProductSelect (product) {
-        this.setState(prevState => {
-            return {
-                selectedProducts: prevState.selectedProducts.concat(product)
-            }
-        });
-    }
-
-
     render () {
         return (
-            <MuiThemeProvider>
-                <Router>
-                    <div>
-                        <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/about">About</Link></li>
-                            <li><Link to="/bookmarks">Bookmarks</Link></li>
-                            <li><Link to="/old-match">Old Match, to be
-                                redirected</Link></li>
-                            <li><Link to="/will-not-match">Will Not
-                                Match</Link>
-                            </li>
-                        </ul>
-                        <hr/>
+            <Provider store={store}>
+                <MuiThemeProvider>
+                    <Router>
+                        <div>
+                            <ul>
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/about">About</Link></li>
+                                <li><Link to="/bookmarks">Bookmarks</Link></li>
+                                <li><Link to="/old-match">Old Match, to be
+                                    redirected</Link></li>
+                                <li><Link to="/will-not-match">Will Not
+                                    Match</Link>
+                                </li>
+                            </ul>
+                            <hr/>
 
-                        <Switch>
-                            <Route exact path="/" component={HomePage}/>
-                            <Route path="/about" component={AboutPage}/>
-                            <Redirect from="/old-match" to="/about"/>
-                            <Route path="/bookmarks"
-                                   render={(props) => (
-                                       <Bookmarks {...props}
-                                                  products={this.state.products}
-                                                  onProductSelect={this.handleProductSelect.bind(this)}
-                                       />
-                                   )}
-                            />
-                            <Route component={NoMatch}/>
-                        </Switch>
-                    </div>
-                </Router>
-            </MuiThemeProvider>
+                            <Switch>
+                                <Route exact path="/" component={HomePage}/>
+                                <Route path="/about" component={AboutPage}/>
+                                <Redirect from="/old-match" to="/about"/>
+                                <Route path="/bookmarks"
+                                       component={ListBookmarks}/>
+                                <Route component={NoMatch}/>
+                            </Switch>
+                        </div>
+                    </Router>
+                </MuiThemeProvider>
+            </Provider>
         );
     }
 }
