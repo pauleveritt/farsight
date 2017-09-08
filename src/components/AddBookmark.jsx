@@ -3,7 +3,7 @@ import React from 'react'
 class Bookmarks extends React.Component {
     render () {
         return (
-            <div>Bookmarks</div>
+            <h1>Add Bookmark</h1>
         )
     }
 }

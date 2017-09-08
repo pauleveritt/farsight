@@ -17,6 +17,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import ListBookmarks from "./ListBookmarks";
+import AddBookmark from "./AddBookmark";
 
 const NoMatch = ({location}) => (
     <div>
@@ -47,6 +48,8 @@ class App extends Component {
                                 <Route exact path="/" component={HomePage}/>
                                 <Route path="/about" component={AboutPage}/>
                                 <Redirect from="/old-match" to="/about"/>
+                                <Route path="/bookmarks/add"
+                                       component={AddBookmark}/>
                                 <Route path="/bookmarks"
                                        component={ListBookmarks}/>
                                 <Route component={NoMatch}/>
