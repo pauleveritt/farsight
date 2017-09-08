@@ -12,6 +12,9 @@ import './App.css';
 import ProductList from "./ProductList";
 
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import RaisedButton from 'material-ui/RaisedButton'
+
 const Home = () => (
     <div>
         <h2>Home</h2>
@@ -91,28 +94,41 @@ class App extends Component {
 
     render () {
         return (
-            <Router>
-                <div>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                        <li><Link to="/topics">Products</Link></li>
-                        <li><Link to="/old-match">Old Match, to be
-                            redirected</Link></li>
-                        <li><Link to="/will-not-match">Will Not Match</Link>
-                        </li>
-                    </ul>
-                    <hr/>
+            <MuiThemeProvider>
+                <Router>
+                    <div>
+                        <div className="App">
+                            <div>
+                                <h2>Welcome to React</h2>
+                            </div>
+                            <p>
+                                To get started, edit <code>src/App.js</code>
+                                and save to reload.
+                            </p>
+                            <RaisedButton label="Material UI"/>
+                        </div>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                            <li><Link to="/topics">Products</Link></li>
+                            <li><Link to="/old-match">Old Match, to be
+                                redirected</Link></li>
+                            <li><Link to="/will-not-match">Will Not
+                                Match</Link>
+                            </li>
+                        </ul>
+                        <hr/>
 
-                    <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/about" component={About}/>
-                        <Redirect from="/old-match" to="/about"/>
-                        <Route path="/topics" component={ProductStore}/>
-                        <Route component={NoMatch}/>
-                    </Switch>
-                </div>
-            </Router>
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/about" component={About}/>
+                            <Redirect from="/old-match" to="/about"/>
+                            <Route path="/topics" component={ProductStore}/>
+                            <Route component={NoMatch}/>
+                        </Switch>
+                    </div>
+                </Router>
+            </MuiThemeProvider>
         );
     }
 }
