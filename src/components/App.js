@@ -14,10 +14,21 @@ import ProductList from "./ProductList";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
+import {Grid, Row, Col} from 'react-flexbox-grid'
 
 const Home = () => (
     <div>
         <h2>Home</h2>
+        <Grid fluid>
+            <Row>
+                <Col xs={6} md={3}>
+                    Hello, world!
+                </Col>
+                <Col xs={6} md={3}>
+                    Hello, world!
+                </Col>
+            </Row>
+        </Grid>
     </div>
 )
 
