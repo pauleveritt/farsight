@@ -1,11 +1,14 @@
 import {observable, action, computed, useStrict} from 'mobx'
 import axios from 'axios'
+import {appConfig} from '../config'
 
 useStrict(true)
 
 class BookmarksStore {
     @observable bookmarks = []
     @observable selectedItem = {}
+
+    url = appConfig.API_SERVER + '/xbookmarks'
 
     constructor (rootStore) {
         this.rootStore = rootStore
@@ -29,9 +32,10 @@ class BookmarksStore {
 
     @action
     getBookmarks () {
-        axios.get('http://jsonplaceholder.typicode.com/users').then(response => {
-            this.setBookmarks(response.data)
-        })
+        axios.get(this.url)
+            .then(response => {
+                this.setBookmarks(response.data)
+            })
     }
 }
 

@@ -14,6 +14,8 @@ export const appConfig = {
             {id: 2, title: 'About', routeName: 'about'},
             {id: 3, title: 'Bookmarks', routeName: 'bookmarks'}
         ]
-    }
+    },
+
+    API_SERVER: 'http://localhost:3001'
 
 };
