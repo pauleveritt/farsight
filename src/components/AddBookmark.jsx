@@ -1,9 +1,19 @@
 import React from 'react'
+import {TextField} from 'material-ui'
+import {inject, observer} from 'mobx-react'
 
-class Bookmarks extends React.Component {
+@inject('store') @observer
+class AddBookmark extends React.Component {
 
-    state = {
-        currentUrl: 'http://dummy.url.com'
+    constructor (props) {
+        super(props);
+        this.state = {
+            currentUrl: 'http://dummy.url.com'
+        }
+
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount () {
@@ -22,10 +32,21 @@ class Bookmarks extends React.Component {
                     currentWindow: true
                 }, (arrayOfTabs) => {
                     const activeTab = arrayOfTabs[0]
-                    this.setState({currentUrl:activeTab.url})
+                    this.setState({currentUrl: activeTab.url})
                 });
             }
         }
+    }
+
+    handleChange (event) {
+        this.setState({currentUrl: event.target.value});
+    }
+
+    handleSubmit (event) {
+        event.preventDefault();
+        const currentUrl = this.state.currentUrl
+        const store = this.props.store
+        console.log(currentUrl, store)
     }
 
     render () {
@@ -34,12 +55,18 @@ class Bookmarks extends React.Component {
         return (
             <div>
                 <h1>Add Bookmark</h1>
-                <p>URL: {currentUrl}</p>
-
+                <form onSubmit={this.handleSubmit}>
+                    <TextField
+                        hintText="URL..."
+                        value={currentUrl}
+                        onChange={this.handleChange}
+                    />
+                    <input type="submit" value="Add"/>
+                </form>
             </div>
         )
     }
 }
 
 
-export default Bookmarks
+export default AddBookmark
