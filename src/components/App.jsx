@@ -32,6 +32,8 @@ class App extends Component {
     appStyle = {padding: '1em'}
 
     render () {
+
+
         const {
             drawerOpened,
             drawerMenus,
@@ -90,7 +92,7 @@ class App extends Component {
                     }
                 />
                 <div style={this.appStyle}>
-                <MainRoutes/>
+                    <MainRoutes/>
                 </div>
             </div>
         )
