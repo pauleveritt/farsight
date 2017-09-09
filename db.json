@@ -2,7 +2,23 @@
   "bookmarks": [
     {
       "id": 1,
-      "name": "First bookmark"
+      "name": "First bookmark",
+      "url": "http://some.place.com"
+    },
+    {
+      "name": "Next one",
+      "url": "http://dummy.url.com",
+      "id": 955436
+    },
+    {
+      "name": "Next one",
+      "url": "http://dummsssy.url.com",
+      "id": 864280
+    },
+    {
+      "name": "asdfasdf",
+      "url": "http://dummy.url.sscom",
+      "id": 512318
     }
   ]
 }

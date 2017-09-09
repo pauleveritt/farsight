@@ -8,9 +8,9 @@ class AddBookmark extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            currentUrl: 'http://dummy.url.com'
+            currentUrl: 'http://dummy.url.com',
+            name: ''
         }
-
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,29 +39,49 @@ class AddBookmark extends React.Component {
     }
 
     handleChange (event) {
-        this.setState({currentUrl: event.target.value});
+        const targetName = event.target.name
+        const targetValue = event.target.value
+        this.setState({[targetName]: targetValue});
     }
 
     handleSubmit (event) {
         event.preventDefault();
         const currentUrl = this.state.currentUrl
+        const name = this.state.name
         const store = this.props.store
-        console.log(currentUrl, store)
+
+        store.bookmarksStore.addBookmark(
+            {name: name, url: currentUrl})
+            .then(() => this.props.history.push({pathname: '/bookmarks'}))
     }
 
     render () {
         const currentUrl = this.state.currentUrl
+        const name = this.state.name
 
         return (
             <div>
                 <h1>Add Bookmark</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <TextField
-                        hintText="URL..."
-                        value={currentUrl}
-                        onChange={this.handleChange}
-                    />
-                    <input type="submit" value="Add"/>
+                    <div>
+                        <TextField
+                            name="currentUrl"
+                            hintText="URL..."
+                            value={currentUrl}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            name="name"
+                            hintText="Name..."
+                            value={name}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div>
+                        <input type="submit" value="Add"/>
+                    </div>
                 </form>
             </div>
         )

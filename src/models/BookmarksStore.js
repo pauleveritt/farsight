@@ -1,4 +1,4 @@
-import {observable, action, computed, useStrict} from 'mobx'
+import {observable, action, useStrict} from 'mobx'
 import axios from 'axios'
 import {appConfig} from '../config'
 
@@ -6,7 +6,6 @@ useStrict(true)
 
 class BookmarksStore {
     @observable bookmarks = []
-    @observable selectedItem = {}
 
     url = appConfig.API_SERVER + '/bookmarks'
 
@@ -14,21 +13,22 @@ class BookmarksStore {
         this.rootStore = rootStore
     }
 
-    @computed
-    get selectedId () {
-        return this.selectedItem.id
-    }
 
-    @action setBookmarks = (bookmarks) => {
+    @action
+    setBookmarks = (bookmarks) => {
         this.bookmarks = [...bookmarks]
     }
-    @action selectUser = (user) => {
-        this.selectedItem = user
+
+    @action
+    addBookmark = (newBookmark) => {
+        // A real service will handle the id generation
+        newBookmark.id = Math.floor(Math.random() * 1000000)
+        return axios.post(this.url, newBookmark)
+            .catch(function (error) {
+                console.log('Error posting addBookmark', error)
+            })
     }
 
-    @action clearSelectedUser = () => {
-        this.selectedItem = {}
-    }
 
     @action
     getBookmarks () {
