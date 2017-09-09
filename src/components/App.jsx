@@ -114,7 +114,7 @@ class App extends Component {
     routeTo = routeName => event => {
         event.preventDefault()
         const {history} = this.props
-        this.toggleDrawer()
+        this.setState({drawerOpened: false})
         history.push({pathname: routeName})
     }
 
