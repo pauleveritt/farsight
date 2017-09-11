@@ -1,5 +1,5 @@
 import React from 'react'
-import {TextField} from 'material-ui'
+import {RaisedButton, TextField} from 'material-ui'
 import {inject, observer} from 'mobx-react'
 
 @inject('store') @observer
@@ -12,8 +12,9 @@ class AddBookmark extends React.Component {
             name: ''
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleCancel = this.handleSubmit.bind(this)
     }
 
     componentDidMount () {
@@ -55,9 +56,19 @@ class AddBookmark extends React.Component {
             .then(() => this.props.history.push({pathname: '/bookmarks'}))
     }
 
+    handleCancel (event) {
+        event.preventDefault()
+        this.setState({name: ''})
+        this.props.history.push({pathname: '/bookmarks'})
+    }
+
     render () {
         const currentUrl = this.state.currentUrl
         const name = this.state.name
+
+        const buttonStyle = {
+            marginRight: '0.5em'
+        }
 
         return (
             <div>
@@ -80,7 +91,12 @@ class AddBookmark extends React.Component {
                         />
                     </div>
                     <div>
-                        <input type="submit" value="Add"/>
+                        <RaisedButton label="Add" primary={true}
+                                      onClick={this.handleSubmit}
+                                      style={buttonStyle}/>
+                        <RaisedButton label="Cancel" secondary={true}
+                                      style={buttonStyle}
+                                      onClick={this.handleCancel}/>
                     </div>
                 </form>
             </div>
