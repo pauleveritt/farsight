@@ -21,7 +21,8 @@ class ViewBookmark extends React.Component {
 
 
     componentDidMount () {
-        this.props.store.bookmarksStore.getBookmark(1)
+        const bookmarkId = Number(this.props.match.params.bookmarkId)
+        this.props.store.bookmarksStore.getBookmark(bookmarkId)
             .then(response => this.setState({bookmark: response.data}))
     }
 
@@ -45,6 +46,7 @@ class ViewBookmark extends React.Component {
                                 </Link>
                                 View Bookmark <code>{bookmark.id}</code>
                             </h1>
+                            <p>name: {bookmark.name}</p>
                             <p>url: {bookmark.url}</p>
                         </Col>
                     </Row>

@@ -19,7 +19,7 @@ class ListBookmarks extends React.Component {
     }
 
 
-    handleClick (item) {
+    handleNavigate (item) {
          this.props.history.push({pathname: '/bookmarks/' + item.id})
     }
 
@@ -55,7 +55,7 @@ class ListBookmarks extends React.Component {
                                             rightIcon={<Delete/>}
                                             primaryText={bookmark.name}
                                             secondaryText="Jan 9, 2014"
-                                            onClick={() => this.handleClick(bookmark)}
+                                            onClick={() => this.handleNavigate(bookmark)}
                                         />
                                     ))
                                 }
@@ -71,9 +71,9 @@ class ListBookmarks extends React.Component {
                                     <span>
                                         <Link to={{
                                             pathname: '/bookmarks',
-                                            state: {bookmarkId: 1}
+                                            state: {bookmarkId: bookmark.id}
                                         }}>
-                                        {bookmark.name} xxx
+                                        {bookmark.name}
                                         </Link>
                                         </span>
                                 </Col>
