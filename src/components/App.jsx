@@ -21,8 +21,6 @@ class App extends Component {
         history: PropTypes.object.isRequired
     }
 
-    static contextTypes = {}
-
     state = {
         appName: appConfig.APP_NAME,
         drawerOpened: false,

@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import './index.css'
 import registerServiceWorker from './registerServiceWorker'
-import Root from "./Root";
+import Root from './Root'
 
 injectTapEventPlugin()
 

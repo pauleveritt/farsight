@@ -11,7 +11,8 @@ const NotFound = (props) => {
     }
     return (
         <div>
-            <h3>No match for <code>{location.pathname}</code></h3>
+            <h1>Not Found</h1>
+            <p>No match for <code>{location.pathname}</code></p>
         </div>
     )
 }

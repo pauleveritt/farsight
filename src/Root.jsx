@@ -1,13 +1,13 @@
-import React from 'react';
-import {Router} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
+import React from 'react'
+import {Router} from 'react-router-dom'
+import {createBrowserHistory} from 'history'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {Provider} from 'mobx-react'
 
-import App from './components/App';
+import App from './components/App'
 import store from './models/index'
 
-const history = createBrowserHistory();
+const history = createBrowserHistory()
 
 const Root = () => (
     <Provider store={store}>
@@ -19,4 +19,4 @@ const Root = () => (
     </Provider>
 )
 
-export default Root;
+export default Root
