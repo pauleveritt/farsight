@@ -7,7 +7,7 @@ useStrict(true)
 class BookmarksStore {
     @observable bookmarks = []
 
-    url = appConfig.API_SERVER + '/bookmarks'
+    url = appConfig.API_SERVER + '/bookmark'
 
     constructor (rootStore) {
         this.rootStore = rootStore

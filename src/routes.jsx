@@ -15,10 +15,10 @@ const Routes = () => {
             <Route exact path="/" component={Homepage}/>
             <Route path="/about" component={AboutPage}/>
             <Redirect from="/old-match" to="/about"/>
-            <Route path="/bookmarks/:bookmarkId"
-                   component={ViewBookmark}/>
             <Route path="/bookmarks/add"
                    component={AddBookmark}/>
+            <Route path="/bookmarks/:bookmarkId"
+                   component={ViewBookmark}/>
             <Route exact path="/bookmarks"
                    component={ListBookmarks}/>
             <Route component={NotFound}/>

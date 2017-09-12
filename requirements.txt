@@ -1,0 +1,5 @@
+flask
+flask-restless
+sqlalchemy
+flask_sqlalchemy
+flask-cors

@@ -16,7 +16,7 @@ export const appConfig = {
         ]
     },
 
-    API_SERVER: 'http://localhost:3001',
+    API_SERVER: 'http://localhost:3001/api',
 
     BUTTON_STYLES: {
         smallIcon: {
