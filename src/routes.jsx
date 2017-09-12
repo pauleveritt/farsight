@@ -15,11 +15,11 @@ const Routes = () => {
             <Route exact path="/" component={Homepage}/>
             <Route path="/about" component={AboutPage}/>
             <Redirect from="/old-match" to="/about"/>
-            <Route path="/bookmarks/add"
+            <Route path="/bookmark/add"
                    component={AddBookmark}/>
-            <Route path="/bookmarks/:bookmarkId"
+            <Route path="/bookmark/:bookmarkId"
                    component={ViewBookmark}/>
-            <Route exact path="/bookmarks"
+            <Route exact path="/bookmark"
                    component={ListBookmarks}/>
             <Route component={NotFound}/>
         </Switch>

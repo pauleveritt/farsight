@@ -53,13 +53,13 @@ class AddBookmark extends React.Component {
 
         store.bookmarksStore.addBookmark(
             {name: name, url: currentUrl})
-            .then(() => this.props.history.push({pathname: '/bookmarks'}))
+            .then(() => this.props.history.push({pathname: '/bookmark'}))
     }
 
     handleCancel (event) {
         event.preventDefault()
         this.setState({name: ''})
-        this.props.history.push({pathname: '/bookmarks'})
+        this.props.history.push({pathname: '/bookmark'})
     }
 
     render () {

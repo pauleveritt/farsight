@@ -7,7 +7,7 @@ const NotFound = (props) => {
     if (location.pathname === '/index.html') {
         // Looks like we're in the Chrome extension, let's redirect to
         // the "right" place. Add Bookmark for now.
-        history.push('/bookmarks/add')
+        history.push('/bookmark/add')
     }
     return (
         <div>

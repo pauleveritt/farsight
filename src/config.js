@@ -12,7 +12,7 @@ export const appConfig = {
         menus: [
             {id: 1, title: 'Home', routeName: '/'},
             {id: 2, title: 'About', routeName: '/about'},
-            {id: 3, title: 'Bookmarks', routeName: '/bookmarks'}
+            {id: 3, title: 'Bookmarks', routeName: '/bookmark'}
         ]
     },
 

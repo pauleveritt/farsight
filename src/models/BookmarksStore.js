@@ -43,7 +43,7 @@ class BookmarksStore {
     getBookmarks () {
         axios.get(this.url)
             .then(response => {
-                this.setBookmarks(response.data)
+                this.setBookmarks(response.data.objects)
             })
     }
 

@@ -20,7 +20,7 @@ class ListBookmarks extends React.Component {
 
 
     handleNavigate (item) {
-        this.props.history.push({pathname: '/bookmarks/' + item.id})
+        this.props.history.push({pathname: '/bookmark/' + item.id})
     }
 
     handleDelete (item) {
@@ -42,7 +42,7 @@ class ListBookmarks extends React.Component {
                             <h1>List Bookmarks</h1>
                         </Col>
                         <Col md={2}>
-                            <Link to="/bookmarks/add">
+                            <Link to="/bookmark/add">
                                 <IconButton
                                     iconStyle={styles.mediumIcon}
                                     style={styles.medium}
