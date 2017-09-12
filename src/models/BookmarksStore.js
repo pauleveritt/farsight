@@ -29,6 +29,16 @@ class BookmarksStore {
             })
     }
 
+    // @action
+    // deleteBookmark = (bookmark) => {
+    //     // A real service will handle the id generation
+    //     newBookmark.id = Math.floor(Math.random() * 1000000)
+    //     return axios.post(this.url, newBookmark)
+    //         .catch(function (error) {
+    //             console.log('Error posting addBookmark', error)
+    //         })
+    // }
+    //
 
     @action
     getBookmarks () {
@@ -36,6 +46,15 @@ class BookmarksStore {
             .then(response => {
                 this.setBookmarks(response.data)
             })
+    }
+
+    @action
+
+    getBookmark (bookmarkId) {
+        return axios.get(this.url + '/' + bookmarkId)
+            .catch(response => console.log(
+                'Failed to get bookmark: ' + bookmarkId
+            ))
     }
 }
 
