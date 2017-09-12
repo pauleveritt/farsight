@@ -22,12 +22,16 @@ class ViewBookmark extends React.Component {
 
 
     render () {
+        const bookmark = this.state.bookmark
+
         return (
             <div>
                 <Grid>
                     <Row>
                         <Col md={6}>
-                            <h1>View Bookmark</h1>
+                            <h1>View Bookmark <code>{bookmark.id}</code>
+                            </h1>
+                            <p>url: {bookmark.url}</p>
                         </Col>
                     </Row>
                 </Grid>
