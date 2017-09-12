@@ -8,9 +8,6 @@ import {inject, observer} from 'mobx-react'
 import {Col, Grid, Row} from 'react-flexbox-grid'
 
 import {List, ListItem} from 'material-ui/List';
-import ActionInfo from 'material-ui/svg-icons/action/info';
-import Avatar from 'material-ui/Avatar';
-import FileFolder from 'material-ui/svg-icons/file/folder';
 import {appConfig} from '../config'
 
 
@@ -55,9 +52,7 @@ class ListBookmarks extends React.Component {
                                     this.props.store.bookmarksStore.bookmarks.map(bookmark => (
                                         <ListItem
                                             key={bookmark.id}
-                                            leftAvatar={<Avatar
-                                                icon={<FileFolder/>}/>}
-                                            rightIcon={<ActionInfo/>}
+                                            rightIcon={<Delete/>}
                                             primaryText={bookmark.name}
                                             secondaryText="Jan 9, 2014"
                                             onClick={() => this.handleClick(bookmark)}
