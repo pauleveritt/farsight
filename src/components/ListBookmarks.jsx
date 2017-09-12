@@ -20,7 +20,16 @@ class ListBookmarks extends React.Component {
 
 
     handleNavigate (item) {
-         this.props.history.push({pathname: '/bookmarks/' + item.id})
+        this.props.history.push({pathname: '/bookmarks/' + item.id})
+    }
+
+    handleDelete (item) {
+        const bookmarkId = item.id
+        const store = this.props.store.bookmarksStore
+        store.deleteBookmark(bookmarkId)
+            .then(
+                () => store.getBookmarks()
+            )
     }
 
     render () {
@@ -52,7 +61,11 @@ class ListBookmarks extends React.Component {
                                     this.props.store.bookmarksStore.bookmarks.map(bookmark => (
                                         <ListItem
                                             key={bookmark.id}
-                                            rightIcon={<Delete/>}
+                                            rightIconButton={
+                                                <IconButton
+                                                    onClick={() => this.handleDelete(bookmark)}>
+                                                    <Delete/>
+                                                </IconButton>}
                                             primaryText={bookmark.name}
                                             secondaryText="Jan 9, 2014"
                                             onClick={() => this.handleNavigate(bookmark)}
@@ -63,34 +76,7 @@ class ListBookmarks extends React.Component {
                         </Col>
                     </Row>
                 </Grid>
-                <Grid>
-                    {
-                        this.props.store.bookmarksStore.bookmarks.map(bookmark => (
-                            <Row key={bookmark.id}>
-                                <Col md={6}>
-                                    <span>
-                                        <Link to={{
-                                            pathname: '/bookmarks',
-                                            state: {bookmarkId: bookmark.id}
-                                        }}>
-                                        {bookmark.name}
-                                        </Link>
-                                        </span>
-                                </Col>
-                                <Col md={2}>
-                                    <Link to="/bookmarks/add">
-                                        <IconButton
-                                            iconStyle={styles.smallIcon}
-                                            style={styles.small}
-                                        >
-                                            <Delete/>
-                                        </IconButton>
-                                    </Link>
-                                </Col>
-                            </Row>
-                        ))
-                    }
-                </Grid>
+
             </div>
         )
     }

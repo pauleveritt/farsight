@@ -29,16 +29,15 @@ class BookmarksStore {
             })
     }
 
-    // @action
-    // deleteBookmark = (bookmark) => {
-    //     // A real service will handle the id generation
-    //     newBookmark.id = Math.floor(Math.random() * 1000000)
-    //     return axios.post(this.url, newBookmark)
-    //         .catch(function (error) {
-    //             console.log('Error posting addBookmark', error)
-    //         })
-    // }
-    //
+    @action
+    deleteBookmark = (bookmarkId) => {
+        // A real service will handle the id generation
+        return axios.delete(this.url + '/' + bookmarkId)
+            .catch(function (error) {
+                console.log('Error deleting bookmark', error)
+            })
+    }
+
 
     @action
     getBookmarks () {

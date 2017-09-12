@@ -7,11 +7,6 @@
     },
     {
       "name": "Next one",
-      "url": "http://dummy.url.com",
-      "id": 955436
-    },
-    {
-      "name": "Next one",
       "url": "http://dummsssy.url.com",
       "id": 864280
     },
@@ -19,26 +14,6 @@
       "name": "asdfasdf",
       "url": "http://dummy.url.sscom",
       "id": 512318
-    },
-    {
-      "name": "Mozilla",
-      "url": "https://www.mozilla.org/en-US/",
-      "id": 308884
-    },
-    {
-      "name": "Malo",
-      "url": "https://www.mozilla.org/en-US/",
-      "id": 119822
-    },
-    {
-      "name": "ytuyttu",
-      "url": "http://dummy.url.com",
-      "id": 294898
-    },
-    {
-      "name": "xxx",
-      "url": "http://dummy.url.com",
-      "id": 284973
     }
   ]
 }
